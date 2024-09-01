@@ -10,79 +10,108 @@ html {
 
 /* Fullscreen Loading */
 #loading {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgb(0, 0, 0); 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    overflow: hidden; /* Mencegah scroll */
-    transition: filter 1s ease, opacity 1s ease; /* Transisi filter dan opacity */
-    filter: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0); 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden; /* Prevent scroll */
+  transition: filter 1s ease, opacity 1s ease; /* Transition for filter and opacity */
+  filter: none;
+  padding: 0 20px; /* Padding for smaller screens */
 }
 
 /* Logo Styling */
 #loading-logo {
-    width: auto;
-    height: 200px;
-    /* Remove rotation animation, set to a fixed state */
+  width: auto;
+  height: 15vw; /* Responsive height based on viewport width */
+  max-height: 200px; /* Ensure it doesn't exceed 200px */
 }
 
 /* Text Styling */
 #loading-text {
-    font-size: 24px;
-    font-weight: bold;
-    color: #ffffff; /* Warna teks putih */
-    margin-top: 20px;
-    text-align: center;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: slideUp 2.5s ease-in-out infinite;
-    font-family: 'Press Start 2P', cursive; /* Gunakan font pixelated */
+  font-size: 5vw; /* Responsive font size based on viewport width */
+  font-weight: bold;
+  color: #ffffff; /* White text color */
+  margin-top: 20px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 2.5s ease-in-out infinite;
+  font-family: 'Press Start 2P', cursive; /* Pixelated font */
 }
 
 /* Slide Up Animation */
 @keyframes slideUp {
-    0% { opacity: 0; transform: translateY(20px); }
-    50% { opacity: 1; transform: translateY(0); }
-    100% { opacity: 0; transform: translateY(-20px); }
+  0% { opacity: 0; transform: translateY(20px); }
+  50% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); }
 }
 
 /* Percentage Container Styling */
 #percentage-container {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 #percentage {
-    font-size: 20px;
-    font-weight: bold;
-    color: #9dff00; /* Warna biru muda untuk persentase */
-    text-shadow: 0 0 10px #99ff00cc; /* Bayangan teks */
-    font-family: 'Press Start 2P', cursive; /* Gunakan font pixelated */
+  font-size: 4vw; /* Responsive font size for percentage */
+  font-weight: bold;
+  color: #9dff00; /* Light green for percentage */
+  text-shadow: 0 0 10px #99ff00cc; /* Text shadow */
+  font-family: 'Press Start 2P', cursive; /* Pixelated font */
 }
 
 /* Content Hidden by Default */
 #content {
-    opacity: 0;
-    transition: opacity 1s ease; /* Transisi opacity */
-    font-family: 'Press Start 2P', cursive; /* Gunakan font pixelated */
+  opacity: 0;
+  transition: opacity 1s ease; /* Transition for opacity */
+  font-family: 'Press Start 2P', cursive; /* Pixelated font */
 }
 
 /* Pixel Transition Effect */
 @keyframes pixelate {
-    from {
-        filter: none;
-    }
-    to {
-        filter: pixelate(10px); /* Ubah ukuran pixel untuk efek */
-    }
+  from {
+      filter: none;
+  }
+  to {
+      filter: pixelate(10px); /* Pixelate effect size */
+  }
 }
 
+/* Media Queries for Smaller Screens */
+@media screen and (max-width: 768px) {
+  #loading-logo {
+      height: 20vw; /* Increase height for tablets */
+  }
+
+  #loading-text {
+      font-size: 6vw; /* Increase font size for tablets */
+  }
+
+  #percentage {
+      font-size: 5vw; /* Increase font size for tablets */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #loading-logo {
+      height: 25vw; /* Increase height for mobile devices */
+  }
+
+  #loading-text {
+      font-size: 8vw; /* Increase font size for mobile devices */
+  }
+
+  #percentage {
+      font-size: 6vw; /* Increase font size for mobile devices */
+  }
+}
 
 
 /* Global Styles */
@@ -153,10 +182,12 @@ a {
   width: 100%;
 }
 
+/* Burger Menu */
 .burger {
   display: none;
   cursor: pointer;
-  margin-right: auto; /* Align the burger to the right */
+  margin-left: auto; /* Align the burger to the right */
+  z-index: 1001; /* Ensure it’s above other content */
 }
 
 .burger div {
@@ -167,12 +198,13 @@ a {
   transition: all 0.3s ease;
 }
 
+/* Responsive Styles for Navigation and Burger Menu */
 @media screen and (max-width: 768px) {
   .nav-links {
       position: absolute;
-      right: 0px;
+      top: 8vh; /* Adjust top position */
+      right: 0; /* Align to the right edge */
       height: 92vh;
-      top: 8vh;
       background-color: rgba(255, 255, 255, 0.9);
       display: flex;
       flex-direction: column;
@@ -184,6 +216,7 @@ a {
 
   .nav-links a {
       opacity: 0;
+      transition: opacity 0.3s ease; /* Smooth transition for links */
   }
 
   .burger {
@@ -231,6 +264,7 @@ a {
   align-items: center;
   color: #ffffff;
   text-align: center;
+  padding: 0 20px; /* Add some padding for smaller screens */
 }
 
 .hero-content {
@@ -238,8 +272,7 @@ a {
 }
 
 .hero h1 {
-  font-size: 220px;
-  ;
+  font-size: 10vw; /* Responsive text size based on viewport width */
   font-weight: bold;
   margin: 0 0 20px 0;
   color: #000;
@@ -247,10 +280,29 @@ a {
 
 .hero-photo {
   border-radius: 50%;
-  width: 150px;
-  height: 150px;
+  width: 15vw; /* Responsive width */
+  height: 15vw; /* Responsive height */
   object-fit: cover;
 }
+
+@media screen and (max-width: 768px) {
+  .hero h1 {
+    font-size: 12vw; /* Increase font size for tablets */
+  }
+
+  .hero-photo {
+    width: 20vw; /* Increase photo size for tablets */
+    height: 20vw; /* Increase photo size for tablets */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero h1 {
+    font-size: 16vw; /* Further increase font size for mobile devices */
+  }
+
+}
+
 
 /* About Me and Skills Section */
 #about {
@@ -268,22 +320,32 @@ a {
 
 .about-photo {
   width: auto;
-  height: 300px;
+  height: 30vw; /* Use viewport width for responsiveness */
+  max-height: 300px; /* Ensure it doesn’t exceed 300px on larger screens */
   object-fit: cover;
   margin-bottom: 20px; /* Space between photo and About Me */
-  
+
   /* Border and gap */
-  padding-left: 200px; /* This creates the gap between the photo and the border */
-  padding-right: 200px;
-  padding-top: 120px;
-  padding-bottom: 120px ;
+  padding: 10vw; /* Responsive padding based on viewport width */
   background-color: rgba(255, 255, 255, 0); /* Color of the gap */
   border: 2px solid #000; /* Border width and color */
   border-radius: 10px; /* Optional: Rounded corners */
   background-clip: padding-box; /* Ensures the background color doesn't extend into the border */
 }
 
+@media screen and (max-width: 768px) {
+  .about-photo {
+    height: 40vw; /* Adjust height for tablets */
+    padding: 12vw; /* Adjust padding for tablets */
+  }
+}
 
+@media screen and (max-width: 480px) {
+  .about-photo {
+    height: 50vw; /* Further adjust height for mobile devices */
+    padding: 10vw; /* Adjust padding for mobile devices */
+  }
+}
 
 .about-me {
   max-width: 800px;
@@ -459,7 +521,7 @@ footer {
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(157, 255, 0, 0.7); /* Slightly darken on hover */
+    background: rgba(95, 95, 95, 0.7); /* Slightly darken on hover */
   }
 
   /* Ensure the scrollbar applies to the whole document */
