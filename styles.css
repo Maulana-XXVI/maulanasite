@@ -1,0 +1,470 @@
+html {
+  scroll-behavior: smooth;
+}
+
+
+/* LOADING SCREEN CSS */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Fullscreen Loading */
+#loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0, 0, 0); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow: hidden; /* Mencegah scroll */
+    transition: filter 1s ease, opacity 1s ease; /* Transisi filter dan opacity */
+    filter: none;
+}
+
+/* Logo Styling */
+#loading-logo {
+    width: auto;
+    height: 200px;
+    /* Remove rotation animation, set to a fixed state */
+}
+
+/* Text Styling */
+#loading-text {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff; /* Warna teks putih */
+    margin-top: 20px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUp 2.5s ease-in-out infinite;
+    font-family: 'Press Start 2P', cursive; /* Gunakan font pixelated */
+}
+
+/* Slide Up Animation */
+@keyframes slideUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    50% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-20px); }
+}
+
+/* Percentage Container Styling */
+#percentage-container {
+    margin-top: 20px;
+}
+
+#percentage {
+    font-size: 20px;
+    font-weight: bold;
+    color: #9dff00; /* Warna biru muda untuk persentase */
+    text-shadow: 0 0 10px #99ff00cc; /* Bayangan teks */
+    font-family: 'Press Start 2P', cursive; /* Gunakan font pixelated */
+}
+
+/* Content Hidden by Default */
+#content {
+    opacity: 0;
+    transition: opacity 1s ease; /* Transisi opacity */
+    font-family: 'Press Start 2P', cursive; /* Gunakan font pixelated */
+}
+
+/* Pixel Transition Effect */
+@keyframes pixelate {
+    from {
+        filter: none;
+    }
+    to {
+        filter: pixelate(10px); /* Ubah ukuran pixel untuk efek */
+    }
+}
+
+
+
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #333;
+  
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 20px 0;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: center; /* Center the entire nav content */
+  align-items: center;
+  padding: 0 20px;
+}
+
+.nav-logo {
+  height: 36px;
+  max-width: 100px;
+  margin-left: auto; /* Align the logo to the left */
+}
+
+.nav-links {
+  display: flex;
+}
+
+.nav-links a {
+  margin: 0 15px;
+  color: #000000;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #d0d0d0;
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.burger {
+  display: none;
+  cursor: pointer;
+  margin-right: auto; /* Align the burger to the right */
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: #000000;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-links {
+      position: absolute;
+      right: 0px;
+      height: 92vh;
+      top: 8vh;
+      background-color: rgba(255, 255, 255, 0.9);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 50%;
+      transform: translateX(100%);
+      transition: transform 0.5s ease-in;
+  }
+
+  .nav-links a {
+      opacity: 0;
+  }
+
+  .burger {
+      display: block;
+  }
+}
+
+.nav-active {
+  transform: translateX(0%);
+}
+
+@keyframes navLinkFade {
+  from {
+      opacity: 0;
+      transform: translateX(50px);
+  }
+  to {
+      opacity: 1;
+      transform: translateX(0px);
+  }
+}
+
+.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+  opacity: 0;
+}
+
+.toggle .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+
+/* Hero/Banner Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: url('hero-background.jpg') no-repeat center center/cover;
+  display: flex;
+  flex-direction: column; /* Stack text and photo vertically */
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  text-align: center;
+}
+
+.hero-content {
+  position: relative;
+}
+
+.hero h1 {
+  font-size: 220px;
+  ;
+  font-weight: bold;
+  margin: 0 0 20px 0;
+  color: #000;
+}
+
+.hero-photo {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+/* About Me and Skills Section */
+#about {
+  padding: 60px 20px;
+  background: #f5f5f5;
+  background-attachment: fixed; /* Enable parallax effect */
+  background-size: cover;
+}
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-photo {
+  width: auto;
+  height: 300px;
+  object-fit: cover;
+  margin-bottom: 20px; /* Space between photo and About Me */
+  
+  /* Border and gap */
+  padding-left: 200px; /* This creates the gap between the photo and the border */
+  padding-right: 200px;
+  padding-top: 120px;
+  padding-bottom: 120px ;
+  background-color: rgba(255, 255, 255, 0); /* Color of the gap */
+  border: 2px solid #000; /* Border width and color */
+  border-radius: 10px; /* Optional: Rounded corners */
+  background-clip: padding-box; /* Ensures the background color doesn't extend into the border */
+}
+
+
+
+.about-me {
+  max-width: 800px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.skills {
+  max-width: 800px;
+  text-align: center;
+}
+
+.skills-images {
+  display: flex;
+  overflow-x: auto; /* Enable horizontal scroll */
+  padding: 20px 0;
+  gap: 15px; /* Space between images */
+}
+
+.skills-images img {
+  width: 100px;
+  height: auto;
+  flex-shrink: 0; /* Prevent images from shrinking */
+}
+/* Projects Section */
+#projects {
+  padding: 60px 20px;
+  background: #ffffff;
+}
+
+.projects-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.project {
+  max-width: 300px;
+  margin: 15px;
+  text-align: center;
+}
+
+.project img {
+  width: 100%;
+  height: auto;
+}
+
+/* Contact Section */
+#contact {
+  padding: 60px 20px;
+  background: #f5f5f5;
+}
+
+/* Footer Styling */
+footer {
+  background: #000000; /* Black background */
+  color: #ffffff; /* White text color */
+  padding: 20px;
+  position: relative; /* Set relative positioning for the footer */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+}
+
+.footer-left {
+  flex: 1;
+  text-align: left;
+}
+
+.footer-left p {
+  margin: 0;
+  font-size: 180px; /* Large font size for the name */
+  font-weight: bold;
+  line-height: 0.9; /* Adjust line height to avoid overlapping */
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column; /* Stack social links vertically */
+  margin-top: 10px;
+}
+
+.social-links a {
+  margin-bottom: 6px; /* Space between social links */
+  color: #ffffff; /* Default text color */
+  font-size: 16px; /* Font size for social links */
+  text-decoration: none;
+  background-image: linear-gradient(to right, #9dff00, #ccff00); /* Gradient colors */
+  background-size: 200% 100%; /* Make gradient larger than text to create animation effect */
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  background-clip: text;
+  -webkit-background-clip: text;
+  transition: background-position 0.7s ease, color 0.7s ease;
+}
+
+.social-links a:hover {
+  background-position: right bottom; /* Move gradient from left to right */
+  color: transparent; /* Hide the default text color to show gradient */
+}
+
+.footer-right {
+  position: absolute;
+  bottom: 20px; /* Distance from the bottom */
+  right: 20px; /* Distance from the right */
+  text-align: right;
+}
+
+.footer-right p {
+  margin: 0;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 1024px) {
+  .footer-left p {
+    font-size: 120px; /* Smaller font size for tablets */
+  }
+
+  .footer-right {
+    position: static; /* Remove absolute positioning */
+    text-align: left; /* Align text to the left */
+    margin-top: 20px; /* Add some space on top */
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-left p {
+    font-size: 80px; /* Even smaller font size for smaller screens */
+  }
+
+  .footer-content {
+    flex-direction: column; /* Stack the content vertically */
+    align-items: center; /* Center-align the content */
+    text-align: center; /* Center-align text */
+  }
+
+  .footer-right {
+    text-align: center; /* Center-align text */
+    margin-top: 20px; /* Add space on top */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-left p {
+    font-size: 50px; /* Small font size for mobile devices */
+  }
+
+  .social-links a {
+    font-size: 14px; /* Smaller font size for social links */
+  }
+}
+
+  /* Simple and Glassmorphic Scrollbar with #9dff00 Thumb */
+  ::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.2); /* Track background with slight transparency */
+    backdrop-filter: blur(10px); /* Apply blur for glassmorphic effect */
+    border-radius: 10px; /* Rounded corners */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #818181a3; /* Bright green thumb */
+    backdrop-filter: blur(10px); /* Apply blur for glassmorphic effect */
+    border-radius: 10px; /* Rounded corners */
+    border: 3px solid rgba(255, 255, 255, 0.3); /* Add a border for a more defined look */
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(157, 255, 0, 0.7); /* Slightly darken on hover */
+  }
+
+  /* Ensure the scrollbar applies to the whole document */
+  body {
+    scrollbar-color: #9dff00 rgba(255, 255, 255, 0.2); /* For browsers that support scrollbar-color */
+    scrollbar-width: thin;
+  }
+
