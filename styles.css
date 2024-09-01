@@ -1,5 +1,7 @@
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+
 }
 
 
@@ -159,7 +161,7 @@ a {
 
 .nav-links a {
   margin: 0 15px;
-  color: #000000;
+  color: #f5f5f5;
   text-decoration: none;
   font-size: 16px;
   transition: color 0.3s;
@@ -174,7 +176,7 @@ a {
   bottom: 0;
   width: 0;
   height: 2px;
-  background-color: #d0d0d0;
+  background-color: #9dff00;
   transition: width 0.3s;
 }
 
@@ -193,7 +195,7 @@ a {
 .burger div {
   width: 25px;
   height: 3px;
-  background-color: #000000;
+  background-color: #f5f5f5;
   margin: 5px;
   transition: all 0.3s ease;
 }
@@ -257,57 +259,101 @@ a {
   position: relative;
   height: 100vh;
   width: 100%;
-  background: url('hero-background.jpg') no-repeat center center/cover;
+  background: url('assets/img\ \(1\).jpeg') no-repeat center center/cover;
   display: flex;
-  flex-direction: column; /* Stack text and photo vertically */
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-end; /* Align content to the bottom */
   align-items: center;
   color: #ffffff;
   text-align: center;
-  padding: 0 20px; /* Add some padding for smaller screens */
+  padding: 0 20px;
+  overflow: hidden; /* Ensures that overflowing text is hidden */
 }
 
 .hero-content {
   position: relative;
+  width: 100%;
+  padding-bottom: 20px; /* Add some padding from the bottom */
 }
 
-.hero h1 {
-  font-size: 10vw; /* Responsive text size based on viewport width */
+.hero-subtitle {
+  align-content: center;
+  font-size: 2vw;
   font-weight: bold;
-  margin: 0 0 20px 0;
-  color: #000;
+  text-align: left;
+  width: 100%; /* Make the subtitle span the full width */
+  padding-left: 10%; /* Move the text towards the middle-left */
+  margin: 0;
+  color: #eeeeee;
+}
+
+.marquee {
+  display: inline-block;
+  font-size: 10vw;
+  font-weight: bold;
+  margin: 0;
+  color: #eeeeee;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  animation: marquee 20s linear infinite; /* Increase duration to slow down the animation */
+}
+
+@keyframes marquee {
+  0% {
+      transform: translateX(0);
+  }
+  100% {
+      transform: translateX(-90%);
+  }
 }
 
 .hero-photo {
   border-radius: 50%;
-  width: 15vw; /* Responsive width */
-  height: 15vw; /* Responsive height */
+  width: 15vw;
+  height: 15vw;
   object-fit: cover;
+  margin-top: 20px; /* Optional: Add some space between text and photo */
 }
 
 @media screen and (max-width: 768px) {
-  .hero h1 {
-    font-size: 12vw; /* Increase font size for tablets */
+  .hero-subtitle {
+      font-size: 3vw;
+      padding-left: 8%; /* Adjust for smaller screens */
+  }
+
+  .marquee {
+      font-size: 12vw;
   }
 
   .hero-photo {
-    width: 20vw; /* Increase photo size for tablets */
-    height: 20vw; /* Increase photo size for tablets */
+      width: 20vw;
+      height: 20vw;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .hero h1 {
-    font-size: 16vw; /* Further increase font size for mobile devices */
+  .hero-subtitle {
+      font-size: 4vw;
+      padding-left: 6%; /* Adjust for smaller screens */
   }
 
+  .marquee {
+      font-size: 16vw;
+  }
+
+  .hero-photo {
+      width: 25vw;
+      height: 25vw;
+  }
 }
+
 
 
 /* About Me and Skills Section */
 #about {
   padding: 60px 20px;
-  background: #f5f5f5;
+  background: #1a1a1a;
   background-attachment: fixed; /* Enable parallax effect */
   background-size: cover;
 }
@@ -328,7 +374,7 @@ a {
   /* Border and gap */
   padding: 10vw; /* Responsive padding based on viewport width */
   background-color: rgba(255, 255, 255, 0); /* Color of the gap */
-  border: 2px solid #000; /* Border width and color */
+  border: 2px solid #9dff00; /* Border width and color */
   border-radius: 10px; /* Optional: Rounded corners */
   background-clip: padding-box; /* Ensures the background color doesn't extend into the border */
 }
@@ -351,25 +397,85 @@ a {
   max-width: 800px;
   margin-bottom: 40px;
   text-align: center;
+  color: #f5f5f5;
 }
 
 .skills {
-  max-width: 800px;
-  text-align: center;
+  padding: 20px;
+  color: #f5f5f5;
+  position: relative;
 }
 
-.skills-images {
+.skills-wrapper {
   display: flex;
-  overflow-x: auto; /* Enable horizontal scroll */
-  padding: 20px 0;
-  gap: 15px; /* Space between images */
+  justify-content: center;
+  align-items: center;
+  gap: 200px; /* Space between the sections */
 }
 
-.skills-images img {
-  width: 100px;
-  height: auto;
-  flex-shrink: 0; /* Prevent images from shrinking */
+.skills-left, .skills-right {
+  display: flex;
+  flex-direction: column; /* Stack icons vertically */
+  gap: 45px; /* Space between icons */
 }
+
+.skills h2 {
+  font-size: 70px;
+  padding: 10px 20px;
+  border: 2px solid #9dff00;
+  /*Borderaroundthe"Skills"text*/border-radius: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.skill-icon {
+  width: 60px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.skill-icon:hover {
+  transform: scale(1.1); /* Slightly enlarge the icon on hover */
+}
+
+@media screen and (max-width: 768px) {
+  .skills-wrapper {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .skills-left, .skills-right {
+      flex-direction: row; /* Stack icons horizontally on small screens */
+      gap: 10px;
+  }
+
+  .skills h2 {
+      margin-bottom: 15px;
+  }
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .skills-wrapper {
+      flex-direction: column;
+  }
+
+  .skill-card {
+      align-items: flex-start;
+  }
+
+  .skill-icon {
+      margin-bottom: 8px;
+  }
+
+  .skill-line {
+      display: none;
+  }
+}
+
+
+
 /* Projects Section */
 #projects {
   padding: 60px 20px;
