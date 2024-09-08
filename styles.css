@@ -438,7 +438,7 @@ a {
   font-size: 70px;
   padding: 10px 20px;
   border: 2px solid #9dff00;
-  /*Borderaroundthe"Skills"text*/border-radius: 10px;
+  border-radius: 10px;
   position: relative;
   z-index: 1;
 }
@@ -455,37 +455,41 @@ a {
 
 @media screen and (max-width: 768px) {
   .skills-wrapper {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between; /* Keep left and right sections on their sides */
+    gap: 50px;
   }
 
   .skills-left, .skills-right {
-      flex-direction: row; /* Stack icons horizontally on small screens */
-      gap: 10px;
+    flex-direction: column;
+    gap: 25px; /* Adjust gap for mobile screens */
   }
 
   .skills h2 {
-      margin-bottom: 15px;
+    margin-bottom: 15px;
+    font-size: 50px; /* Adjust heading size for smaller screens */
   }
 }
 
-
-
 @media screen and (max-width: 480px) {
   .skills-wrapper {
-      flex-direction: column;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between; /* Maintain left and right sections */
   }
 
-  .skill-card {
-      align-items: flex-start;
+  .skills-left, .skills-right {
+    flex-direction: column;
+    gap: 15px; /* Reduce gap for smaller mobile screens */
   }
 
   .skill-icon {
-      margin-bottom: 8px;
+    width: 40px; /* Reduce icon size for very small screens */
   }
 
-  .skill-line {
-      display: none;
+  .skills h2 {
+    font-size: 40px; /* Adjust the size of the "Skills" text for small screens */
   }
 }
 
