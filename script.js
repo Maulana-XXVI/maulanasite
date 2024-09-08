@@ -1,5 +1,8 @@
 // script.js
 
+
+
+
 window.addEventListener('load', function() {
   var percentageText = document.getElementById('percentage');
   var loadingText = document.getElementById('loading-text');
