@@ -1,0 +1,780 @@
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+
+}
+
+
+
+/* LOADING SCREEN CSS */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Fullscreen Loading */
+#loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0); 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  overflow: hidden; /* Prevent scroll */
+  transition: filter 1s ease, opacity 1s ease; /* Transition for filter and opacity */
+  filter: none;
+  padding: 0 20px; /* Padding for smaller screens */
+}
+
+/* Logo Styling */
+#loading-logo {
+  width: auto;
+  height: 15vw; /* Responsive height based on viewport width */
+  max-height: 200px; /* Ensure it doesn't exceed 200px */
+}
+
+/* Text Styling */
+#loading-text {
+  font-size: 5vw; /* Responsive font size based on viewport width */
+  font-weight: bold;
+  color: #ffffff; /* White text color */
+  margin-top: 20px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 2.5s ease-in-out infinite;
+  font-family: 'Press Start 2P', cursive; /* Pixelated font */
+}
+
+/* Slide Up Animation */
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  50% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-20px); }
+}
+
+/* Percentage Container Styling */
+#percentage-container {
+  margin-top: 20px;
+}
+
+#percentage {
+  font-size: 4vw; /* Responsive font size for percentage */
+  font-weight: bold;
+  color: #9dff00; /* Light green for percentage */
+  text-shadow: 0 0 10px #99ff00cc; /* Text shadow */
+  font-family: 'Press Start 2P', cursive; /* Pixelated font */
+}
+
+/* Content Hidden by Default */
+#content {
+  opacity: 0;
+  transition: opacity 1s ease; /* Transition for opacity */
+  font-family: 'Press Start 2P', cursive; /* Pixelated font */
+}
+
+/* Pixel Transition Effect */
+@keyframes pixelate {
+  from {
+      filter: none;
+  }
+  to {
+      filter: pixelate(10px); /* Pixelate effect size */
+  }
+}
+
+/* Media Queries for Smaller Screens */
+@media screen and (max-width: 768px) {
+  #loading-logo {
+      height: 20vw; /* Increase height for tablets */
+  }
+
+  #loading-text {
+      font-size: 6vw; /* Increase font size for tablets */
+  }
+
+  #percentage {
+      font-size: 5vw; /* Increase font size for tablets */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #loading-logo {
+      height: 25vw; /* Increase height for mobile devices */
+  }
+
+  #loading-text {
+      font-size: 8vw; /* Increase font size for mobile devices */
+  }
+
+  #percentage {
+      font-size: 6vw; /* Increase font size for mobile devices */
+  }
+}
+
+
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #333;
+  
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+#navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 20px 0;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: center; /* Center the entire nav content */
+  align-items: center;
+  padding: 0 20px;
+}
+
+.nav-logo {
+  height: 36px;
+  max-width: 100px;
+  margin-left: auto; /* Align the logo to the left */
+}
+
+.nav-links {
+  display: flex;
+}
+
+.nav-links a {
+  margin: 0 15px;
+  color: #f5f5f5;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: #9dff00;
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Burger Menu */
+.burger {
+  display: none;
+  cursor: pointer;
+  margin-left: auto; /* Align the burger to the right */
+  z-index: 1001; /* Ensure it’s above other content */
+}
+
+.burger div {
+  width: 25px;
+  height: 3px;
+  background-color: #f5f5f5;
+  margin: 5px;
+  transition: all 0.3s ease;
+}
+
+/* Responsive Styles for Navigation and Burger Menu */
+@media screen and (max-width: 768px) {
+  .nav-links {
+      position: absolute;
+      top: 8vh; /* Adjust top position */
+      right: 0; /* Align to the right edge */
+      height: 92vh;
+      background-color:rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 50%;
+      transform: translateX(100%);
+      transition: transform 0.5s ease-in;
+  }
+
+  .nav-links a {
+      opacity: 0;
+      transition: opacity 0.3s ease; /* Smooth transition for links */
+  }
+
+  .burger {
+      display: block;
+  }
+}
+
+.nav-active {
+  transform: translateX(0%);
+}
+
+@keyframes navLinkFade {
+  from {
+      opacity: 0;
+      transform: translateX(50px);
+  }
+  to {
+      opacity: 1;
+      transform: translateX(0px);
+  }
+}
+
+.toggle .line1 {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+  opacity: 0;
+}
+
+.toggle .line3 {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Hero/Banner Section */
+.hero {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background: url('assets/img\ \(1\).jpeg') no-repeat center center/cover; /* Default desktop background */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  color: #ffffff;
+  text-align: center;
+  padding: 0 20px;
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+.hero-subtitle {
+  align-content: center;
+  font-size: 3vw;
+  font-weight: bold;
+  text-align: left;
+  width: 100%;
+  padding-left: 10%;
+  margin: 0;
+  color: #eeeeee;
+}
+
+.marquee {
+  display: inline-block;
+  font-size: 10vw;
+  font-weight: bold;
+  margin: 0;
+  color: #eeeeee;
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-90%);
+  }
+}
+
+.hero-photo {
+  border-radius: 50%;
+  width: 15vw;
+  height: 15vw;
+  object-fit: cover;
+  margin-top: 20px;
+}
+
+/* Responsive Styling */
+@media screen and (max-width: 768px) {
+  .hero-subtitle {
+    font-size: 3vw;
+    padding-left: 8%;
+  }
+
+  .marquee {
+    font-size: 12vw;
+  }
+
+  .hero-photo {
+    width: 20vw;
+    height: 20vw;
+  }
+
+  /* Change background image for smaller screens */
+  .hero {
+    background: url('assets/img1\ \(mobile\).jpeg') no-repeat center center/cover;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero-subtitle {
+    font-size: 4vw;
+    padding-left: 6%;
+  }
+
+  .marquee {
+    font-size: 16vw;
+  }
+
+  .hero-photo {
+    width: 25vw;
+    height: 25vw;
+  }
+
+  /* Change to different photo for mobile */
+  .hero {
+    background: url('assets/img1\ \(mobile\).jpeg') no-repeat center center/cover;
+  }
+}
+
+
+
+
+/* About Me and Skills Section */
+#about {
+  padding: 60px;
+  background: #1a1a1a;
+  background-attachment: fixed;
+  background-size: cover;
+  min-height: 100vh; /* Ensure it covers at least the full viewport height */
+  width: 100%; /* Ensure full width */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
+}
+
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%; /* Ensure it fills the parent container */
+}
+
+.about-photo {
+  width: auto;
+  height: 30vw; /* Use viewport width for responsiveness */
+  max-height: 300px; /* Ensure it doesn’t exceed 300px on larger screens */
+  object-fit: cover;
+  margin-bottom: 20px; /* Space between photo and About Me */
+
+  /* Border and gap */
+  padding: 10vw; /* Responsive padding based on viewport width */
+  background-color: rgba(255, 255, 255, 0); /* Color of the gap */
+  border: 2px solid #9dff00; /* Border width and color */
+  border-radius: 10px; /* Optional: Rounded corners */
+  background-clip: padding-box; /* Ensures the background color doesn't extend into the border */
+}
+
+@media screen and (max-width: 768px) {
+  #about {
+    padding: 40px 10px; /* Kurangi padding untuk layar kecil */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .about-photo {
+    height: 50vw; /* Further adjust height for mobile devices */
+    padding: 10vw; /* Adjust padding for mobile devices */
+  }
+}
+
+.about-me {
+  max-width: 800px;
+  margin-bottom: 40px;
+  text-align: center;
+  color: #f5f5f5;
+}
+
+.skills {
+  padding: 20px;
+  color: #f5f5f5;
+  position: relative;
+}
+
+.skills-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 200px; /* Space between the sections */
+}
+
+.skills-left, .skills-right {
+  display: flex;
+  flex-direction: column; /* Stack icons vertically */
+  gap: 45px; /* Space between icons */
+}
+
+.skills h2 {
+  font-size: 70px;
+  padding: 10px 20px;
+  border: 2px solid #9dff00;
+  /*Borderaroundthe"Skills"text*/border-radius: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.skill-icon {
+  width: 60px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.skill-icon:hover {
+  transform: scale(1.1); /* Slightly enlarge the icon on hover */
+}
+
+@media screen and (max-width: 768px) {
+  .skills-wrapper {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .skills-left, .skills-right {
+      flex-direction: row; /* Stack icons horizontally on small screens */
+      gap: 10px;
+  }
+
+  .skills h2 {
+      margin-bottom: 15px;
+  }
+}
+
+
+
+@media screen and (max-width: 480px) {
+  .skills-wrapper {
+      flex-direction: column;
+  }
+
+  .skill-card {
+      align-items: flex-start;
+  }
+
+  .skill-icon {
+      margin-bottom: 8px;
+  }
+
+  .skill-line {
+      display: none;
+  }
+}
+
+
+/* Projects Section */
+#projects {
+  padding: 80px;
+  background-color: #1a1a1a;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#projects h2 {
+  color: #ffffff;
+  font-size: 3rem;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  position: relative;
+}
+
+#projects h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background-color: #9dff00;
+}
+
+/* Projects Container */
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); /* Adjusted for larger cards */
+  gap: 40px;
+  width: 100%;
+  max-width: 1400px;
+}
+
+/* Individual Project Card */
+.project {
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* Add border for outline effect */
+  border: 2px solid transparent;
+}
+
+/* Outline animation on hover */
+.project:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+  border: 2px solid #9dff00; /* Green border */
+  position: relative;
+  z-index: 1;
+}
+
+.project img {
+  width: 100%;
+  height: auto; /* Ensure image maintains aspect ratio */
+  aspect-ratio: 16 / 9; /* Maintain 4:3 ratio */
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out;
+}
+
+.project:hover img {
+  transform: scale(1.05);
+}
+
+/* Project Information - placed below the image */
+.project-info {
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.75);
+  text-align: center;
+  position: relative;
+}
+
+.project-info h3 {
+  color: #9dff00;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.project-info p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  #projects h2 {
+    font-size: 2.5rem;
+  }
+
+  .projects-container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  #projects h2 {
+    font-size: 2.2rem;
+  }
+
+  .projects-container {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+  }
+
+  .project-info h3 {
+    font-size: 1.3rem;
+  }
+
+  .project-info p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #projects h2 {
+    font-size: 2rem;
+  }
+
+  .projects-container {
+    grid-template-columns: 1fr;
+  }
+
+  .project-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .project-info p {
+    font-size: 0.9rem;
+  }
+}
+
+
+/* Contact Section */
+#contact {
+  padding: 60px;
+  background: #f5f5f5;
+}
+
+/* Footer Styling */
+footer {
+  background: #000000;
+  color: #ffffff;
+  padding: 20px;
+  position: relative;
+  width: 100%; /* Ensure full width */
+  box-sizing: border-box; /* Include padding in the element's total width */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%; /* Ensure full width */
+}
+
+.footer-left {
+  flex: 1;
+  text-align: left;
+}
+
+.footer-left p {
+  margin: 0;
+  font-size: 180px; /* Large font size for the name */
+  font-weight: bold;
+  line-height: 0.9; /* Adjust line height to avoid overlapping */
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column; /* Stack social links vertically */
+  margin-top: 10px;
+}
+
+.social-links a {
+  margin-bottom: 6px; /* Space between social links */
+  color: #ffffff; /* Default text color */
+  font-size: 16px; /* Font size for social links */
+  text-decoration: none;
+  background-image: linear-gradient(to right, #9dff00, #ccff00); /* Gradient colors */
+  background-size: 200% 100%; /* Make gradient larger than text to create animation effect */
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  background-clip: text;
+  -webkit-background-clip: text;
+  transition: background-position 0.7s ease, color 0.7s ease;
+}
+
+.social-links a:hover {
+  background-position: right bottom; /* Move gradient from left to right */
+  color: transparent; /* Hide the default text color to show gradient */
+}
+
+.footer-right {
+  position: absolute;
+  bottom: 20px; /* Distance from the bottom */
+  right: 20px; /* Distance from the right */
+  text-align: right;
+}
+
+.footer-right p {
+  margin: 0;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 1024px) {
+  .footer-left p {
+    font-size: 120px; /* Smaller font size for tablets */
+  }
+
+  .footer-right {
+    position: static; /* Remove absolute positioning */
+    text-align: left; /* Align text to the left */
+    margin-top: 20px; /* Add some space on top */
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-left p {
+    font-size: 80px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-right {
+    position: static;
+    text-align: center;
+    margin-top: 20px;
+    width: 100%; /* Ensure full width */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-left p {
+    font-size: 50px;
+  }
+
+
+
+
+  .social-links a {
+    font-size: 14px; /* Smaller font size for social links */
+  }
+}
+
+  /* Simple and Glassmorphic Scrollbar with #9dff00 Thumb */
+  ::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.2); /* Track background with slight transparency */
+    backdrop-filter: blur(10px); /* Apply blur for glassmorphic effect */
+    border-radius: 10px; /* Rounded corners */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #818181a3; /* Bright green thumb */
+    backdrop-filter: blur(10px); /* Apply blur for glassmorphic effect */
+    border-radius: 10px; /* Rounded corners */
+    border: 3px solid rgba(255, 255, 255, 0.3); /* Add a border for a more defined look */
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(95, 95, 95, 0.7); /* Slightly darken on hover */
+  }
+
+  /* Ensure the scrollbar applies to the whole document */
+  body {
+    scrollbar-color: #9dff00 rgba(255, 255, 255, 0.2); /* For browsers that support scrollbar-color */
+    scrollbar-width: thin;
+  }
+
