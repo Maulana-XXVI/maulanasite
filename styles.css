@@ -253,28 +253,26 @@ a {
 .toggle .line3 {
   transform: rotate(45deg) translate(-5px, -6px);
 }
-
-
 /* Hero/Banner Section */
 .hero {
   position: relative;
   height: 100vh;
   width: 100%;
-  background: url('assets/img\ \(1\).jpeg') no-repeat center center/cover;
+  background: url('assets/img\ \(1\).jpeg') no-repeat center center/cover; /* Default desktop background */
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Align content to the bottom */
+  justify-content: flex-end;
   align-items: center;
   color: #ffffff;
   text-align: center;
   padding: 0 20px;
-  overflow: hidden; /* Ensures that overflowing text is hidden */
+  overflow: hidden;
 }
 
 .hero-content {
   position: relative;
   width: 100%;
-  padding-bottom: 20px; /* Add some padding from the bottom */
+  padding-bottom: 20px;
 }
 
 .hero-subtitle {
@@ -282,8 +280,8 @@ a {
   font-size: 3vw;
   font-weight: bold;
   text-align: left;
-  width: 100%; /* Make the subtitle span the full width */
-  padding-left: 10%; /* Move the text towards the middle-left */
+  width: 100%;
+  padding-left: 10%;
   margin: 0;
   color: #eeeeee;
 }
@@ -297,15 +295,15 @@ a {
   white-space: nowrap;
   overflow: hidden;
   position: relative;
-  animation: marquee 20s linear infinite; /* Increase duration to slow down the animation */
+  animation: marquee 20s linear infinite;
 }
 
 @keyframes marquee {
   0% {
-      transform: translateX(0);
+    transform: translateX(0);
   }
   100% {
-      transform: translateX(-90%);
+    transform: translateX(-90%);
   }
 }
 
@@ -314,40 +312,52 @@ a {
   width: 15vw;
   height: 15vw;
   object-fit: cover;
-  margin-top: 20px; /* Optional: Add some space between text and photo */
+  margin-top: 20px;
 }
 
+/* Responsive Styling */
 @media screen and (max-width: 768px) {
   .hero-subtitle {
-      font-size: 3vw;
-      padding-left: 8%; /* Adjust for smaller screens */
+    font-size: 3vw;
+    padding-left: 8%;
   }
 
   .marquee {
-      font-size: 12vw;
+    font-size: 12vw;
   }
 
   .hero-photo {
-      width: 20vw;
-      height: 20vw;
+    width: 20vw;
+    height: 20vw;
+  }
+
+  /* Change background image for smaller screens */
+  .hero {
+    background: url('assets/img1\ \(mobile\).jpeg') no-repeat center center/cover;
   }
 }
 
 @media screen and (max-width: 480px) {
   .hero-subtitle {
-      font-size: 4vw;
-      padding-left: 6%; /* Adjust for smaller screens */
+    font-size: 4vw;
+    padding-left: 6%;
   }
 
   .marquee {
-      font-size: 16vw;
+    font-size: 16vw;
   }
 
   .hero-photo {
-      width: 25vw;
-      height: 25vw;
+    width: 25vw;
+    height: 25vw;
+  }
+
+  /* Change to different photo for mobile */
+  .hero {
+    background: url('assets/img1\ \(mobile\).jpeg') no-repeat center center/cover;
   }
 }
+
 
 
 
