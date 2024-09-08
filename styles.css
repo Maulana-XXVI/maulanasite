@@ -278,7 +278,7 @@ a {
 
 .hero-subtitle {
   align-content: center;
-  font-size: 2vw;
+  font-size: 3vw;
   font-weight: bold;
   text-align: left;
   width: 100%; /* Make the subtitle span the full width */
@@ -354,14 +354,18 @@ a {
 #about {
   padding: 60px 20px;
   background: #1a1a1a;
-  background-attachment: fixed; /* Enable parallax effect */
+  background-attachment: fixed;
   background-size: cover;
+  min-height: 100vh; /* Ensure it covers at least the full viewport height */
+  width: 100%; /* Ensure full width */
+  box-sizing: border-box; /* Include padding in the element's total width and height */
 }
 
 .about-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 100%; /* Ensure it fills the parent container */
 }
 
 .about-photo {
@@ -380,9 +384,8 @@ a {
 }
 
 @media screen and (max-width: 768px) {
-  .about-photo {
-    height: 40vw; /* Adjust height for tablets */
-    padding: 12vw; /* Adjust padding for tablets */
+  #about {
+    padding: 40px 10px; /* Kurangi padding untuk layar kecil */
   }
 }
 
@@ -507,17 +510,20 @@ a {
 
 /* Footer Styling */
 footer {
-  background: #000000; /* Black background */
-  color: #ffffff; /* White text color */
+  background: #000000;
+  color: #ffffff;
   padding: 20px;
-  position: relative; /* Set relative positioning for the footer */
+  position: relative;
+  width: 100%; /* Ensure full width */
+  box-sizing: border-box; /* Include padding in the element's total width */
 }
 
 .footer-content {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  flex-wrap: wrap; /* Allow content to wrap on smaller screens */
+  flex-wrap: wrap;
+  width: 100%; /* Ensure full width */
 }
 
 .footer-left {
@@ -583,26 +589,33 @@ footer {
 
 @media (max-width: 768px) {
   .footer-left p {
-    font-size: 80px; /* Even smaller font size for smaller screens */
+    font-size: 80px;
   }
 
   .footer-content {
-    flex-direction: column; /* Stack the content vertically */
-    align-items: center; /* Center-align the content */
-    text-align: center; /* Center-align text */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
   .footer-right {
-    text-align: center; /* Center-align text */
-    margin-top: 20px; /* Add space on top */
+    position: static;
+    text-align: center;
+    margin-top: 20px;
+    width: 100%; /* Ensure full width */
   }
 }
 
 @media (max-width: 480px) {
   .footer-left p {
-    font-size: 50px; /* Small font size for mobile devices */
+    font-size: 50px;
   }
 
+  footer {
+    padding: 15px; /* Kurangi padding untuk layar sangat kecil */
+  }
+
+  
   .social-links a {
     font-size: 14px; /* Smaller font size for social links */
   }
