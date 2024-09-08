@@ -29,12 +29,6 @@ html {
   filter: none;
 }
 
-/* Logo Styling */
-#loading-logo {
-  width: auto;
-  height: 15vw; /* Responsive height based on viewport width */
-  max-height: 200px; /* Ensure it doesn't exceed 200px */
-}
 
 /* Text Styling */
 #loading-text {
@@ -88,9 +82,6 @@ html {
 
 /* Media Queries for Smaller Screens */
 @media screen and (max-width: 768px) {
-  #loading-logo {
-      height: 20vw; /* Increase height for tablets */
-  }
 
   #loading-text {
       font-size: 6vw; /* Increase font size for tablets */
@@ -102,10 +93,6 @@ html {
 }
 
 @media screen and (max-width: 480px) {
-  #loading-logo {
-      height: 25vw; /* Increase height for mobile devices */
-  }
-
   #loading-text {
       font-size: 8vw; /* Increase font size for mobile devices */
   }
@@ -267,7 +254,6 @@ a {
   align-items: center;
   color: #ffffff;
   text-align: center;
-  padding: 0 20px;
   overflow: hidden;
 }
 
@@ -398,14 +384,18 @@ a {
 
 @media screen and (max-width: 768px) {
   #about {
-    padding: 40px 10px; /* Kurangi padding untuk layar kecil */
+    padding: 40px 10px; /* Adjust padding for smaller screens */
+  }
+
+  .about-photo {
+    height: 50vw; /* Further adjust height for mobile devices */
   }
 }
 
 @media screen and (max-width: 480px) {
   .about-photo {
     height: 50vw; /* Further adjust height for mobile devices */
-    padding: 10vw; /* Adjust padding for mobile devices */
+    padding: 5vw; /* Adjust padding for mobile devices */
   }
 }
 
