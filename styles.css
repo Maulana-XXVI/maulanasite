@@ -27,7 +27,6 @@ html {
   overflow: hidden; /* Prevent scroll */
   transition: filter 1s ease, opacity 1s ease; /* Transition for filter and opacity */
   filter: none;
-  padding: 0 20px; /* Padding for smaller screens */
 }
 
 /* Logo Styling */
@@ -205,14 +204,16 @@ a {
 @media screen and (max-width: 768px) {
   .nav-links {
       position: absolute;
-      top: 8vh; /* Adjust top position */
+      padding-top: 32px;
+      gap: 24px;
+      top: 10vh; /* Adjust top position */
       right: 0; /* Align to the right edge */
-      height: 92vh;
-      background-color:rgba(255, 255, 255, 0.1);
+      height: 100vh;
+      background-color:rgba(165, 165, 165, 0.305);
       display: flex;
       flex-direction: column;
       align-items: center;
-      width: 50%;
+      width: 30%;
       transform: translateX(100%);
       transition: transform 0.5s ease-in;
   }
@@ -458,7 +459,7 @@ a {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between; /* Keep left and right sections on their sides */
-    gap: 50px;
+    gap: 150px;
   }
 
   .skills-left, .skills-right {
@@ -492,7 +493,6 @@ a {
     font-size: 40px; /* Adjust the size of the "Skills" text for small screens */
   }
 }
-
 
 /* Projects Section */
 #projects {
@@ -539,26 +539,25 @@ a {
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  position: relative;
   display: flex;
   flex-direction: column;
   /* Add border for outline effect */
   border: 2px solid transparent;
 }
 
-/* Outline animation on hover */
 .project:hover {
   transform: translateY(-12px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
-  border: 2px solid #9dff00; /* Green border */
+  border: 2px solid #9dff00;
   position: relative;
   z-index: 1;
 }
 
+/* Project Image */
 .project img {
   width: 100%;
-  height: auto; /* Ensure image maintains aspect ratio */
-  aspect-ratio: 16 / 9; /* Maintain 4:3 ratio */
+  height: auto;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   transition: transform 0.3s ease-in-out;
 }
@@ -567,12 +566,14 @@ a {
   transform: scale(1.05);
 }
 
-/* Project Information - placed below the image */
+/* Project Information */
 .project-info {
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.75);
-  text-align: center;
+  text-align: left; /* Align text to the left */
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .project-info h3 {
@@ -588,6 +589,32 @@ a {
 }
 
 /* Responsive Styles */
+@media (min-width: 1024px) {
+  .projects-container {
+    grid-template-columns: 1fr; /* One column container */
+  }
+
+  .project {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two-column grid for desktop */
+    align-items: flex-start; /* Align content to the top */
+    grid-gap: 20px;
+  }
+
+  .project img {
+    grid-column: 1; /* Image on the left */
+    grid-row: 1;
+    object-fit: cover;
+  }
+
+  .project-info {
+    grid-column: 2; /* Text on the right */
+    grid-row: 1;
+    align-self: flex-start;
+    text-align: left; /* Ensure text is left-aligned */
+  }
+}
+
 @media (max-width: 1024px) {
   #projects h2 {
     font-size: 2.5rem;
@@ -636,16 +663,107 @@ a {
   }
 }
 
-
-/* Contact Section */
+/* Contact Section Styling */
 #contact {
-  padding: 60px;
-  background: #f5f5f5;
+  background: #1a1a1a;
+  padding: 80px 20px;
+  color: #ffffff;
 }
+
+.contact-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 60px;
+  background: none;
+  border-radius: 0;
+}
+
+#contact h2 {
+  font-size: 36px;
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: left;
+}
+
+#contact p {
+  font-size: 18px;
+  color: #bbbbbb;
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.form-group label {
+  font-size: 16px;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #444;
+  background-color: #2b2b2b;
+  color: #ffffff;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #9dff00;
+  outline: none;
+}
+
+/* Circular Button Styling */
+.btn {
+  background-color: #9dff00;
+  color: #1a1a1a;
+  font-size: 18px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+/* Button hover effects */
+.btn:hover {
+  background-color: #88e600;
+  transform: scale(1.1);
+}
+
+@media (max-width: 600px) {
+  #contact h2 {
+    font-size: 28px;
+
+  }
+
+  #contact p {
+    font-size: 16px;
+  }
+}
+
 
 /* Footer Styling */
 footer {
-  background: #000000;
+  background: #0f0f0f;
   color: #ffffff;
   padding: 20px;
   position: relative;
@@ -684,18 +802,11 @@ footer {
   color: #ffffff; /* Default text color */
   font-size: 16px; /* Font size for social links */
   text-decoration: none;
-  background-image: linear-gradient(to right, #9dff00, #ccff00); /* Gradient colors */
-  background-size: 200% 100%; /* Make gradient larger than text to create animation effect */
-  background-position: left bottom;
-  background-repeat: no-repeat;
-  background-clip: text;
-  -webkit-background-clip: text;
-  transition: background-position 0.7s ease, color 0.7s ease;
+  transition: color 0.7s ease; /* Smooth transition for color change */
 }
 
 .social-links a:hover {
-  background-position: right bottom; /* Move gradient from left to right */
-  color: transparent; /* Hide the default text color to show gradient */
+  color: #9dff00; /* Change text color on hover */
 }
 
 .footer-right {
@@ -716,9 +827,10 @@ footer {
   }
 
   .footer-right {
-    position: static; /* Remove absolute positioning */
-    text-align: left; /* Align text to the left */
-    margin-top: 20px; /* Add some space on top */
+    position: absolute; /* Keep absolute positioning */
+    bottom: 20px; /* Distance from the bottom */
+    right: 20px; /* Distance from the right */
+    text-align: right; /* Align text to the right */
   }
 }
 
@@ -734,10 +846,11 @@ footer {
   }
 
   .footer-right {
-    position: static;
-    text-align: center;
-    margin-top: 20px;
-    width: 100%; /* Ensure full width */
+    position: absolute; /* Keep absolute positioning */
+    bottom: 20px; /* Distance from the bottom */
+    right: 20px; /* Distance from the right */
+    text-align: right; /* Align text to the right */
+    width: auto; /* Ensure it fits the content */
   }
 }
 
@@ -746,39 +859,35 @@ footer {
     font-size: 50px;
   }
 
-
-
-
   .social-links a {
     font-size: 14px; /* Smaller font size for social links */
   }
 }
 
-  /* Simple and Glassmorphic Scrollbar with #9dff00 Thumb */
-  ::-webkit-scrollbar {
-    width: 12px; /* Width of the scrollbar */
-  }
+/* Simple and Glassmorphic Scrollbar with #9dff00 Thumb */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
 
-  ::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.2); /* Track background with slight transparency */
-    backdrop-filter: blur(10px); /* Apply blur for glassmorphic effect */
-    border-radius: 10px; /* Rounded corners */
-  }
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.2); /* Track background with slight transparency */
+  backdrop-filter: blur(10px); /* Apply blur for glassmorphic effect */
+  border-radius: 10px; /* Rounded corners */
+}
 
-  ::-webkit-scrollbar-thumb {
-    background: #818181a3; /* Bright green thumb */
-    backdrop-filter: blur(10px); /* Apply blur for glassmorphic effect */
-    border-radius: 10px; /* Rounded corners */
-    border: 3px solid rgba(255, 255, 255, 0.3); /* Add a border for a more defined look */
-  }
+::-webkit-scrollbar-thumb {
+  background: #818181a3; /* Bright green thumb */
+  backdrop-filter: blur(10px); /* Apply blur for glassmorphic effect */
+  border-radius: 10px; /* Rounded corners */
+  border: 3px solid rgba(255, 255, 255, 0.3); /* Add a border for a more defined look */
+}
 
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(95, 95, 95, 0.7); /* Slightly darken on hover */
-  }
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(95, 95, 95, 0.7); /* Slightly darken on hover */
+}
 
-  /* Ensure the scrollbar applies to the whole document */
-  body {
-    scrollbar-color: #9dff00 rgba(255, 255, 255, 0.2); /* For browsers that support scrollbar-color */
-    scrollbar-width: thin;
-  }
-
+/* Ensure the scrollbar applies to the whole document */
+body {
+  scrollbar-color: #9dff00 rgba(255, 255, 255, 0.2); /* For browsers that support scrollbar-color */
+  scrollbar-width: thin;
+}
