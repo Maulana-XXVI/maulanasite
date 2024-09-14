@@ -242,6 +242,8 @@ a {
   transform: rotate(45deg) translate(-5px, -6px);
 }
 
+
+
 /* Hero/Banner Section */
 .hero {
   position: relative;
@@ -449,7 +451,7 @@ a {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between; /* Keep left and right sections on their sides */
-    gap: 150px;
+    gap: 120px;
   }
 
   .skills-left, .skills-right {
@@ -661,11 +663,10 @@ a {
 }
 
 .contact-container {
-  max-width: 100%;
+  max-width: 800px;
   margin: 0 auto;
-  padding: 0 60px;
-  background: none;
-  border-radius: 0;
+  padding: 0 20px;
+  text-align: center;
 }
 
 #contact h2 {
@@ -673,79 +674,47 @@ a {
   color: #ffffff;
   margin-bottom: 20px;
   font-weight: bold;
-  text-align: left;
 }
 
 #contact p {
   font-size: 18px;
   color: #bbbbbb;
   margin-bottom: 40px;
-  text-align: left;
 }
 
-.contact-form {
+.social-links {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.form-group label {
-  font-size: 16px;
-  color: #ffffff;
-  margin-bottom: 8px;
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 12px;
-  font-size: 16px;
-  border: 1px solid #444;
-  background-color: #2b2b2b;
-  color: #ffffff;
-  border-radius: 5px;
-  transition: border-color 0.3s ease;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: #9dff00;
-  outline: none;
-}
-
-/* Circular Button Styling */
-.btn {
-  background-color: #9dff00;
-  color: #1a1a1a;
+.social-links a {
   font-size: 18px;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  position: relative;
-  transition: background-color 0.3s ease, transform 0.1s ease;
+  color: #9dff00;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.3s ease;
+  padding: 10px 20px;
+  border: 2px solid #9dff00;
+  border-radius: 30px;
 }
 
-/* Button hover effects */
-.btn:hover {
-  background-color: #88e600;
-  transform: scale(1.1);
+.social-links a:hover {
+  color: #ffffff;
+  background-color: #9dff00;
+  transform: scale(1.05);
 }
 
 @media (max-width: 600px) {
   #contact h2 {
     font-size: 28px;
-
   }
 
   #contact p {
+    font-size: 16px;
+  }
+
+  .social-links a {
     font-size: 16px;
   }
 }
@@ -756,9 +725,9 @@ footer {
   background: #0f0f0f;
   color: #ffffff;
   padding: 20px;
-  position: relative;
-  width: 100%; /* Ensure full width */
-  box-sizing: border-box; /* Include padding in the element's total width */
+  width: 100%;
+  box-sizing: border-box;
+  position: relative; /* Ensure relative positioning for absolute children */
 }
 
 .footer-content {
@@ -766,93 +735,92 @@ footer {
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: wrap;
-  width: 100%; /* Ensure full width */
+  width: 100%;
+  position: relative;
 }
 
 .footer-left {
   flex: 1;
   text-align: left;
+  word-wrap: break-word; /* Ensure text wrapping */
 }
 
-.footer-left p {
-  margin: 0;
-  font-size: 180px; /* Large font size for the name */
+.footer-left-top {
+  font-size: 180px;
   font-weight: bold;
-  line-height: 0.9; /* Adjust line height to avoid overlapping */
+  line-height: 1; /* Adjust line-height for spacing */
 }
 
-.social-links {
-  display: flex;
-  flex-direction: column; /* Stack social links vertically */
-  margin-top: 10px;
-}
-
-.social-links a {
-  margin-bottom: 6px; /* Space between social links */
-  color: #ffffff; /* Default text color */
-  font-size: 16px; /* Font size for social links */
-  text-decoration: none;
-  transition: color 0.7s ease; /* Smooth transition for color change */
-}
-
-.social-links a:hover {
-  color: #9dff00; /* Change text color on hover */
+.footer-left-bottom {
+  font-size: 180px;
+  font-weight: bold;
+  line-height: 1; /* Adjust line-height for spacing */
 }
 
 .footer-right {
-  position: absolute;
-  bottom: 20px; /* Distance from the bottom */
-  right: 20px; /* Distance from the right */
   text-align: right;
+  align-self: flex-end; /* Keep footer-right aligned to the bottom */
+  position: absolute;
+  right: 20px; /* Position it to the right */
+  bottom: 20px; /* Position it to the bottom */
 }
 
 .footer-right p {
   margin: 0;
+  font-size: 16px; /* Default font size */
 }
 
 /* Media Queries for Responsive Design */
 @media (max-width: 1024px) {
-  .footer-left p {
-    font-size: 120px; /* Smaller font size for tablets */
+  .footer-left-top, .footer-left-bottom {
+    font-size: 120px; /* Adjust size for medium screens */
   }
 
-  .footer-right {
-    position: absolute; /* Keep absolute positioning */
-    bottom: 20px; /* Distance from the bottom */
-    right: 20px; /* Distance from the right */
-    text-align: right; /* Align text to the right */
+  .footer-right p {
+    font-size: 14px; /* Adjust footer-right size */
   }
 }
 
 @media (max-width: 768px) {
-  .footer-left p {
-    font-size: 80px;
+  .footer-left-top, .footer-left-bottom {
+    font-size: 80px; /* Adjust size for smaller screens */
   }
 
   .footer-content {
     flex-direction: column;
-    align-items: center;
-    text-align: center;
+    align-items: flex-start; /* Align items to the left */
+    position: relative;
   }
 
   .footer-right {
-    position: absolute; /* Keep absolute positioning */
-    bottom: 20px; /* Distance from the bottom */
-    right: 20px; /* Distance from the right */
-    text-align: right; /* Align text to the right */
-    width: auto; /* Ensure it fits the content */
+    position: static; /* Reset absolute positioning */
+    margin-top: 20px; /* Add margin for spacing */
+    width: 100%;
+  }
+
+  .footer-right p {
+    font-size: 12px; /* Further reduce font size for footer-right */
   }
 }
 
 @media (max-width: 480px) {
-  .footer-left p {
-    font-size: 50px;
+  .footer-left-top, .footer-left-bottom {
+    font-size: 40px; /* Smallest size for footer-left */
   }
 
-  .social-links a {
-    font-size: 14px; /* Smaller font size for social links */
+  .footer-right p {
+    font-size: 10px; /* Smallest size for footer-right */
+  }
+
+  .footer-right {
+    margin-top: 10px; /* Ensure space between footer-left and footer-right */
   }
 }
+
+
+
+
+
 
 /* Simple and Glassmorphic Scrollbar with #9dff00 Thumb */
 ::-webkit-scrollbar {
