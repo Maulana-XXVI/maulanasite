@@ -684,9 +684,10 @@ a {
 
 .social-links {
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Change to horizontal stacking */
   align-items: center;
-  gap: 20px;
+  gap: 20px; /* Space between items */
+  justify-content: center; /* Center the items horizontally */
 }
 
 .social-links a {
@@ -720,6 +721,7 @@ a {
 }
 
 
+
 /* Footer Styling */
 footer {
   background: #0f0f0f;
@@ -727,7 +729,6 @@ footer {
   padding: 20px;
   width: 100%;
   box-sizing: border-box;
-  position: relative; /* Ensure relative positioning for absolute children */
 }
 
 .footer-content {
@@ -736,7 +737,6 @@ footer {
   align-items: flex-start;
   flex-wrap: wrap;
   width: 100%;
-  position: relative;
 }
 
 .footer-left {
@@ -745,79 +745,63 @@ footer {
   word-wrap: break-word; /* Ensure text wrapping */
 }
 
-.footer-left-top {
+.footer-left p {
+  margin: 0;
   font-size: 180px;
   font-weight: bold;
-  line-height: 1; /* Adjust line-height for spacing */
-}
-
-.footer-left-bottom {
-  font-size: 180px;
-  font-weight: bold;
-  line-height: 1; /* Adjust line-height for spacing */
+  line-height: 0.9;
 }
 
 .footer-right {
   text-align: right;
-  align-self: flex-end; /* Keep footer-right aligned to the bottom */
-  position: absolute;
-  right: 20px; /* Position it to the right */
-  bottom: 20px; /* Position it to the bottom */
+  padding-left: 20px; /* Add some space between left and right content */
 }
 
 .footer-right p {
   margin: 0;
-  font-size: 16px; /* Default font size */
+  font-size: 16px;
 }
 
 /* Media Queries for Responsive Design */
 @media (max-width: 1024px) {
-  .footer-left-top, .footer-left-bottom {
-    font-size: 120px; /* Adjust size for medium screens */
+  .footer-left p {
+    font-size: 120px;
   }
 
   .footer-right p {
-    font-size: 14px; /* Adjust footer-right size */
+    font-size: 14px;
   }
 }
 
 @media (max-width: 768px) {
-  .footer-left-top, .footer-left-bottom {
-    font-size: 80px; /* Adjust size for smaller screens */
+  .footer-left p {
+    font-size: 80px;
   }
 
   .footer-content {
     flex-direction: column;
     align-items: flex-start; /* Align items to the left */
-    position: relative;
   }
 
   .footer-right {
-    position: static; /* Reset absolute positioning */
-    margin-top: 20px; /* Add margin for spacing */
+    margin-top: 20px;
     width: 100%;
   }
 
   .footer-right p {
-    font-size: 12px; /* Further reduce font size for footer-right */
+    font-size: 12px;
   }
 }
 
 @media (max-width: 480px) {
-  .footer-left-top, .footer-left-bottom {
-    font-size: 40px; /* Smallest size for footer-left */
+  .footer-left p {
+    font-size: 40px;
   }
 
   .footer-right p {
-    font-size: 10px; /* Smallest size for footer-right */
-  }
-
-  .footer-right {
-    margin-top: 10px; /* Ensure space between footer-left and footer-right */
+    font-size: 10px;
   }
 }
-
-
 
 
 
