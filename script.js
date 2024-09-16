@@ -47,7 +47,7 @@ window.addEventListener('load', function() {
     }
 
     // Update percentage every 70ms
-    var percentageInterval = setInterval(updatePercentage, 69);
+    var percentageInterval = setInterval(updatePercentage, 1);
 
     // Change text every 2.5 seconds
     setInterval(changeText, 2500);

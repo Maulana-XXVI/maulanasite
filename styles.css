@@ -355,7 +355,7 @@ h1 {
 
   .typed-container {
       padding-left: 5%;
-      padding-bottom: 2%;
+      padding-bottom: 5%;
   }
 
   #typed {
@@ -388,7 +388,7 @@ h1 {
 
   .typed-container {
       padding-left: 3%;
-      padding-bottom: 2%;
+      padding-bottom: 10%;
   }
 
   #typed {
@@ -444,7 +444,7 @@ h1 {
 @media screen and (max-width: 480px) {
   .about-photo {
     height: 50vw; /* Further adjust height for mobile devices */
-    padding: 5vw; /* Adjust padding for mobile devices */
+    padding: 10vw; /* Adjust padding for mobile devices */
   }
 }
 
@@ -482,35 +482,56 @@ h1 {
   position: relative;
   z-index: 1;
   text-align: center; /* Center align text for better responsiveness */
+  transition: all 0.3s ease; /* Add smooth transition */
+}
+
+/* Hover Effect for Heading */
+.skills h2:hover {
+  color: #9dff00; /* Change text color on hover */
+  border-color: #ffffff; /* Change border color */
+  background-color: rgba(157, 255, 0, 0.1); /* Add a subtle background */
+  box-shadow: 0 0 15px #9dff00, 0 0 30px #9dff00, 0 0 45px #9dff00; /* Glow effect */
+  transform: scale(1.05); /* Slightly enlarge on hover */
 }
 
 .skill-icon {
   width: 60px;
   height: auto;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
 }
 
+/* Hover Effect for Icons */
 .skill-icon:hover {
-  transform: scale(1.1); /* Slightly enlarge the icon on hover */
+  transform: scale(1.2); /* Slightly enlarge the icon on hover */
+  filter: drop-shadow(0 0 10px #9dff00) drop-shadow(0 0 20px #9dff00); /* Glow effect */
 }
 
+/* Media Queries for Smaller Screens */
 @media screen and (max-width: 768px) {
   .skills-wrapper {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between; /* Keep left and right sections on their sides */
-    gap: 100px;
+    gap: 80px;
   }
 
   .skills-left, .skills-right {
     flex-direction: column;
-    gap: 20px; /* Adjust gap for mobile screens */
+    gap: 18px; /* Adjust gap for mobile screens */
   }
 
   .skills h2 {
-    font-size: 50px; /* Adjust heading size for smaller tablets */
+    font-size: 40px; /* Adjust heading size for smaller tablets */
     padding: 6px 10px; /* Adjust padding for smaller tablets */
-    text-align: center; /* Ensure text remains centered */
+  }
+
+  .skill-icon {
+    width: 50px; /* Reduce icon size for smaller screens */
+  }
+
+  .skill-icon:hover {
+    transform: scale(1.1); /* Slightly smaller enlarge for tablets */
+    filter: drop-shadow(0 0 8px #9dff00) drop-shadow(0 0 15px #9dff00); /* Adjust glow effect */
   }
 }
 
@@ -519,23 +540,29 @@ h1 {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between; /* Maintain left and right sections */
+    gap: 60px;
   }
 
   .skills-left, .skills-right {
     flex-direction: column;
-    gap: 15px; /* Reduce gap for smaller mobile screens */
+    gap: 10px; /* Reduce gap for smaller mobile screens */
+  }
+
+  .skills h2 {
+    font-size: 25px; /* Adjust heading size for very small screens */
+    padding: 5px 8px; /* Adjust padding for very small screens */
   }
 
   .skill-icon {
     width: 40px; /* Reduce icon size for very small screens */
   }
 
-  .skills h2 {
-    font-size: 40px; /* Adjust heading size for very small screens */
-    padding: 5px 8px; /* Adjust padding for very small screens */
-    text-align: center; /* Ensure text remains centered */
+  .skill-icon:hover {
+    transform: scale(1.05); /* Slightly smaller enlarge for mobile */
+    filter: drop-shadow(0 0 6px #9dff00) drop-shadow(0 0 10px #9dff00); /* Adjust glow effect */
   }
 }
+
 
 /* Projects Section */
 #projects {
@@ -667,72 +694,75 @@ h1 {
   transform: translateX(5px);
 }
 
+/* Responsiveness */
 @media (min-width: 1024px) {
   .projects-container {
-      grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr); /* Maksimal 2 kolom */
+    gap: 30px;
   }
 }
 
 @media (max-width: 1024px) {
   #projects h2 {
-      font-size: 2.5rem;
+    font-size: 2.5rem;
   }
 
   .projects-container {
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
+    grid-template-columns: repeat(2, 1fr); /* 2 kolom pada layar sedang */
+    gap: 30px;
   }
 }
 
 @media (max-width: 768px) {
   #projects h2 {
-      font-size: 2.2rem;
+    font-size: 2.2rem;
   }
 
   .projects-container {
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
   }
 
   .project-info h3 {
-      font-size: 1.3rem;
+    font-size: 1.3rem;
   }
 
   .project-info p {
-      font-size: 0.95rem;
+    font-size: 0.95rem;
   }
 }
 
 @media (max-width: 480px) {
   #projects {
-      padding: 60px 20px;
+    padding: 60px 20px;
   }
 
   #projects h2 {
-      font-size: 2rem;
+    font-size: 2rem;
   }
 
   .projects-container {
-      grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* 1 kolom pada layar kecil */
   }
 
   .project-info h3 {
-      font-size: 1.2rem;
+    font-size: 1.2rem;
   }
 
   .project-info p {
-      font-size: 0.9rem;
+    font-size: 0.9rem;
   }
 
   .see-all-projects {
-      font-size: 1rem;
+    font-size: 1rem;
   }
 
   .arrow-icon {
-      width: 20px;
-      height: 20px;
+    width: 20px;
+    height: 20px;
   }
 }
+
 
 /* Contact Section Styling */
 #contact {
