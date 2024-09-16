@@ -38,7 +38,7 @@ window.addEventListener('load', function() {
     }
 
   // Update percentage every 70ms
-    var percentageInterval = setInterval(updatePercentage, 69);
+    var percentageInterval = setInterval(updatePercentage, 1);
 
   // Change text every 2.5 seconds
     setInterval(changeText, 2500);
@@ -67,27 +67,31 @@ window.addEventListener('load', function() {
     });
 
     const navSlide = () => {
-    const burger = document.querySelector('.burger');
-    const nav = document.querySelector('.nav-links');
-    const navLinks = document.querySelectorAll('.nav-links a');
-
-    burger.addEventListener('click', () => {
-        // Toggle Nav
-        nav.classList.toggle('nav-active');
-
-        // Animate Links
-        navLinks.forEach((link, index) => {
-            if (link.style.animation) {
-                link.style.animation = '';
-            } else {
-                link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
-            }
+        const burger = document.querySelector('.burger');
+        const nav = document.querySelector('.nav-links');
+        const navLinks = document.querySelectorAll('.nav-links a');
+    
+        burger.addEventListener('click', () => {
+            // Toggle Nav
+            nav.classList.toggle('nav-active');
+    
+            // Animate Links
+            navLinks.forEach((link, index) => {
+                if (link.style.animation) {
+                    link.style.animation = '';
+                } else {
+                    link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
+                }
+            });
+    
+            // Burger Animation
+            burger.classList.toggle('toggle');
         });
+    }
+    
+    navSlide(); // Panggil fungsi navSlide
+    
 
-        // Burger Animation
-        burger.classList.toggle('toggle');
-    });
-}
 
 
     const sendButton = document.getElementById('sendButton');
@@ -111,5 +115,6 @@ window.addEventListener('load', function() {
 
 navSlide();
 
+    
 
 });
