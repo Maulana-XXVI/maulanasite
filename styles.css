@@ -355,10 +355,15 @@ h1 {
 
   .typed-container {
       padding-left: 5%;
+      padding-bottom: 2%;
   }
 
   #typed {
-      font-size: 10vw;
+      font-size: 7.5vw;
+  }
+
+  .typed-cursor {
+    font-size: 8vw; 
   }
 }
 
@@ -368,7 +373,7 @@ h1 {
   }
 
   .hero-subtitle {
-      font-size: 5vw;
+      font-size: 3vw;
       padding-left: 3%;
   }
 
@@ -383,17 +388,22 @@ h1 {
 
   .typed-container {
       padding-left: 3%;
+      padding-bottom: 2%;
   }
 
   #typed {
-      font-size: 12vw;
+      font-size: 7vw;
   }
+
+  .typed-cursor {
+    font-size: 7vw; 
+  }
+
 }
 
 
 /* About Me and Skills Section */
 #about {
-
   background: #1a1a1a;
   background-attachment: fixed;
   background-size: cover;
@@ -619,7 +629,7 @@ h1 {
   display: inline-flex;
   align-items: center;
   color: #9dff00;
-  font-size: 1.2rem;
+  font-size: 2rem;
   text-decoration: none;
   transition: color 0.3s ease;
   margin-top: 30px;
@@ -646,8 +656,8 @@ h1 {
 }
 
 .arrow-icon {
-  width: 24px;
-  height: 24px;
+  width: auto;
+  height: 38px;
   margin-left: 10px;
   transition: transform 0.3s ease;
   filter: invert(88%) sepia(14%) saturate(2270%) hue-rotate(40deg) brightness(106%) contrast(106%);
