@@ -1,7 +1,12 @@
-html {
+html, body {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  width: 100vw;
+}
 
+* {
+  padding: 0;
+  margin: 0;
 }
 
 /* LOADING SCREEN CSS */
@@ -25,8 +30,9 @@ html {
   overflow: hidden; /* Prevent scroll */
   transition: filter 1s ease, opacity 1s ease; /* Transition for filter and opacity */
   filter: none;
+  padding: 0 10px; /* Add some padding to prevent content from being cut off */
+  box-sizing: border-box; /* Ensure padding doesn't cause overflow */
 }
-
 
 /* Text Styling */
 #loading-text {
@@ -39,6 +45,8 @@ html {
   transform: translateY(20px);
   animation: slideUp 2.5s ease-in-out infinite;
   font-family: 'Press Start 2P', cursive; /* Pixelated font */
+  max-width: 100%; /* Prevents overflow */
+  word-wrap: break-word; /* Allows text to wrap in smaller screens */
 }
 
 /* Slide Up Animation */
@@ -59,6 +67,8 @@ html {
   color: #9dff00; /* Light green for percentage */
   text-shadow: 0 0 10px #99ff00cc; /* Text shadow */
   font-family: 'Press Start 2P', cursive; /* Pixelated font */
+  max-width: 100%; /* Prevents overflow */
+  word-wrap: break-word; /* Allows text to wrap in smaller screens */
 }
 
 /* Content Hidden by Default */
@@ -71,32 +81,31 @@ html {
 /* Pixel Transition Effect */
 @keyframes pixelate {
   from {
-      filter: none;
+    filter: none;
   }
   to {
-      filter: pixelate(10px); /* Pixelate effect size */
+    filter: pixelate(10px); /* Pixelate effect size */
   }
 }
 
 /* Media Queries for Smaller Screens */
 @media screen and (max-width: 768px) {
-
   #loading-text {
-      font-size: 6vw; /* Increase font size for tablets */
+    font-size: 6vw; /* Increase font size for tablets */
   }
 
   #percentage {
-      font-size: 5vw; /* Increase font size for tablets */
+    font-size: 5vw; /* Increase font size for tablets */
   }
 }
 
 @media screen and (max-width: 480px) {
   #loading-text {
-      font-size: 8vw; /* Increase font size for mobile devices */
+    font-size: 8vw; /* Increase font size for mobile devices */
   }
 
   #percentage {
-      font-size: 6vw; /* Increase font size for mobile devices */
+    font-size: 6vw; /* Increase font size for mobile devices */
   }
 }
 
