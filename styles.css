@@ -4,8 +4,6 @@ html {
 
 }
 
-
-
 /* LOADING SCREEN CSS */
 
 
@@ -409,6 +407,7 @@ h1 {
   flex-direction: column;
   align-items: center;
   min-height: 100%; /* Ensure it fills the parent container */
+  padding-top: 6.2vw; /* Adjust the top padding as needed */
 }
 
 .about-photo {
@@ -427,10 +426,6 @@ h1 {
 }
 
 @media screen and (max-width: 768px) {
-  #about {
-
-  }
-
   .about-photo {
     height: 50vw; /* Further adjust height for mobile devices */
   }
@@ -734,13 +729,15 @@ h1 {
   background: #1a1a1a;
   padding: 80px 20px;
   color: #ffffff;
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
 }
 
 .contact-container {
-  max-width: 800px;
+  max-width: 100%; /* Ensure container does not exceed viewport */
   margin: 0 auto;
   padding: 0 20px;
   text-align: center;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
 }
 
 #contact h2 {
@@ -752,16 +749,15 @@ h1 {
 
 #contact p {
   font-size: 18px;
-  color: #bbbbbb;
+  color: #fbfbfb;
   margin-bottom: 40px;
 }
 
 .social-links {
   display: flex;
-  flex-direction: row; /* Horizontal stacking */
-  align-items: center;
-  gap: 20px; /* Space between items */
+  flex-wrap: wrap; /* Wrap items to the next line if needed */
   justify-content: center; /* Center items horizontally */
+  gap: 20px; /* Space between items */
 }
 
 .social-links a {
@@ -784,12 +780,12 @@ h1 {
 }
 
 .social-links a:hover {
-  color: #ffffff;
+  color: #99ff00cc;
   transform: scale(1.05);
 }
 
 .social-links a:hover img {
-  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+  transform: translateX(2px);
 }
 
 .social-links a::after {
@@ -954,6 +950,13 @@ body {
   font-family: 'Montserrat', sans-serif;
   background-color: #1a1a1a;
   color: #fff;
+}
+
+.portfolio-title {
+  font-size: 3em; /* Adjust as needed */
+  text-align: center;
+  margin: 20px 0; /* Adjust spacing around title */
+  padding-top: 90px;
 }
 
 .section-title {
